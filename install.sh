@@ -1,9 +1,7 @@
 #!/bin/bash
 
-apt install software-properties-common -y
-add-apt-repository ppa:wireguard/wireguard -y
-apt update
-apt install wireguard-dkms wireguard-tools qrencode -y
+apt update && apt upgrade
+apt install wireguard -y
 
 
 NET_FORWARD="net.ipv4.ip_forward=1"
