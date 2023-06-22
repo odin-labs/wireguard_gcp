@@ -29,7 +29,7 @@ echo $DNS > ./dns.var
 
 echo 1 > ./last_used_ip.var
 
-WAN_INTERFACE_NAME="eth0"
+WAN_INTERFACE_NAME="ens4"
 
 echo $WAN_INTERFACE_NAME > ./wan_interface_name.var
 
@@ -41,8 +41,8 @@ Address = $SERVER_IP
 SaveConfig = true
 PrivateKey = $SERVER_PRIVKEY
 ListenPort = $SERVER_EXTERNAL_PORT
-PostUp = iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE
-PreDown = iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o ens4 -j MASQUERADE
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o ens4 -j MASQUERADE
 EOF
 done
 
