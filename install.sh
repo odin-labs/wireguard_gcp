@@ -1,7 +1,7 @@
 #!/bin/bash
 
 apt update && apt upgrade
-apt install wireguard -y
+apt install -y wireguard qrencode
 
 
 NET_FORWARD="net.ipv4.ip_forward=1"
@@ -28,9 +28,9 @@ echo $ENDPOINT > ./endpoint.var
 
 if [ -z "$1" ]
   then 
-    read -p "Enter the server address in the VPN subnet (CIDR format), [ENTER] set to default: 10.50.0.1: " SERVER_IP
+    read -p "Enter the server address in the VPN subnet (CIDR format), [ENTER] set to default: 10.22.0.1: " SERVER_IP
     if [ -z $SERVER_IP ]
-      then SERVER_IP="10.50.0.1"
+      then SERVER_IP="10.22.0.1"
     fi
   else SERVER_IP=$1
 fi

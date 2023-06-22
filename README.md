@@ -1,12 +1,12 @@
-# Install and use AWS-based Wireguard
-Scripts automate the installation and use of Wireguard on AWS with Ubuntu Server 18.04
+# Install and use GCP-based Wireguard
+Scripts automate the installation and use of Wireguard on GCP with Ubuntu Server 20.04
 
 ## How use
 
 ### Installation
 ```
-git clone https://github.com/pprometey/wireguard_aws.git wireguard_aws
-cd wireguard_aws
+git clone https://github.com/odin-labs/wireguard_gcp.git wireguard_gcp
+cd gcp
 sudo ./initial.sh
 ```
 
@@ -21,7 +21,7 @@ sudo ./add-client.sh
 sudo ./add-client.sh $CLIENT_NAME
 ```
 
-### Reset customers
+### Reset clients
 `reset.sh` - script that removes information about clients. And stopping the VPN server Winguard
 ```
 sudo ./reset.sh
