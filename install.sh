@@ -49,7 +49,7 @@ done
 
 cp -f ./wg0.conf.def ./wg0.conf
 
-echo -e '\nnet.ipv4.ip_forward=1\n' >> filename
+echo -e '\nnet.ipv4.ip_forward=1\n' >> /etc/sysctl.conf
 
 systemctl enable wg-quick@wg0.service
 systemctl start wg-quick@wg0.service
