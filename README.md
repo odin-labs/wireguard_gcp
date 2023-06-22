@@ -6,7 +6,7 @@ Scripts automate the installation and use of Wireguard on GCP with Ubuntu Server
 ### Installation
 ```
 git clone https://github.com/odin-labs/wireguard_gcp.git wireguard_gcp
-cd gcp
+cd wireguard_gcp
 sudo ./initial.sh
 ```
 
