@@ -52,6 +52,7 @@ cat > /etc/wireguard/clients/$USERNAME/$USERNAME.conf << EOF
 PrivateKey = $CLIENT_PRIVKEY
 Address = $CLIENT_IP
 DNS = $DNS
+MTU = 1360
 
 
 [Peer]
