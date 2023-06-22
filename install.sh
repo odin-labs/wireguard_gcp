@@ -1,7 +1,7 @@
 #!/bin/bash
 
 apt update && apt upgrade
-apt install -y wireguard qrencode
+yes | apt install wireguard qrencode
 
 
 NET_FORWARD="net.ipv4.ip_forward=1"
