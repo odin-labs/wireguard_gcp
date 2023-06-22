@@ -41,9 +41,7 @@ Address = $SERVER_IP
 SaveConfig = true
 PrivateKey = $SERVER_PRIVKEY
 ListenPort = $SERVER_EXTERNAL_PORT
-PostUp = ufw route allow in on wg0 out on eth0
 PostUp = iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE
-PreDown = ufw route delete allow in on wg0 out on eth0
 PreDown = iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
 EOF
 done
@@ -51,11 +49,6 @@ done
 cp -f ./wg0.conf.def ./wg0.conf
 
 echo -e '\nnet.ipv4.ip_forward=1\n' >> filename
-
-ufw allow 51820/udp
-ufw allow OpenSSH
-ufw disable
-ufw enable
 
 systemctl enable wg-quick@wg0.service
 systemctl start wg-quick@wg0.service
