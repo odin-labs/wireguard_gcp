@@ -38,7 +38,7 @@ do
 cat > ./wg0.conf.def << EOF
 [Interface]
 Address = $SERVER_IP
-SaveConfig = true
+SaveConfig = false
 PrivateKey = $SERVER_PRIVKEY
 ListenPort = $SERVER_EXTERNAL_PORT
 PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o ens4 -j MASQUERADE
