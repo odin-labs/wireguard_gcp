@@ -64,8 +64,8 @@ PersistentKeepalive=25
 EOF
 
 
-wg set wg0 peer "$CLIENT_PUBLIC_KEY" allowed-ips $ALLOWED_IP
-ip -4 route add $ALLOWED_IP dev wg0
+wg set wg0 peer "${CLIENT_PUBLIC_KEY}" allowed-ips $CLIENT_IP
+ip -4 route add $CLIENT_IP dev wg0
 
 # Restart Wireguard
 # systemctl stop wg-quick@wg0
