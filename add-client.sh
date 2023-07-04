@@ -63,18 +63,13 @@ Endpoint = $ENDPOINT
 PersistentKeepalive=25
 EOF
 
-# Add new client data to the Wireguard configuration file
-cat >> /etc/wireguard/wg0.conf << EOF
 
-[Peer]
-PublicKey = $CLIENT_PUBLIC_KEY
-PresharedKey = $CLIENT_PRESHARED_KEY
-AllowedIPs = $CLIENT_IP
-EOF
+wg set wg0 peer "$CLIENT_PUBLIC_KEY" allowed-ips $ALLOWED_IP
+ip -4 route add $ALLOWED_IP dev wg0
 
 # Restart Wireguard
-systemctl stop wg-quick@wg0
-systemctl start wg-quick@wg0
+# systemctl stop wg-quick@wg0
+# systemctl start wg-quick@wg0
 
 # Show QR config to display
 qrencode -t ansiutf8 < ./$USERNAME.conf
