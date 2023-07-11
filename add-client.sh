@@ -72,9 +72,8 @@ PresharedKey = $CLIENT_PRESHARED_KEY
 AllowedIPs = $CLIENT_IP
 EOF
 
-# Restart Wireguard
-systemctl stop wg-quick@wg0
-systemctl start wg-quick@wg0
+# Reload config
+wg syncconf wg-internal <(wg-quick strip wg-internal)
 
 # Show QR config to display
 qrencode -t ansiutf8 < ./$USERNAME.conf
