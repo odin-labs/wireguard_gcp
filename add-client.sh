@@ -57,14 +57,13 @@ MTU = 1360
 
 [Peer]
 PublicKey = $SERVER_PUBLIC_KEY
-PresharedKey = $CLIENT_PRESHARED_KEY
 AllowedIPs = $ALLOWED_IP
 Endpoint = $ENDPOINT
 PersistentKeepalive=25
 EOF
 
 
-wg set wg0 peer "${CLIENT_PUBLIC_KEY}" pre-shared-key ./"$USERNAME$PRESHARED_KEY" allowed-ips $CLIENT_IP 
+wg set wg0 peer "${CLIENT_PUBLIC_KEY}" allowed-ips $CLIENT_IP 
 ip -4 route add $CLIENT_IP dev wg0
 
 # Restart Wireguard
