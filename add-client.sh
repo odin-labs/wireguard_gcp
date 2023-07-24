@@ -73,7 +73,7 @@ AllowedIPs = $CLIENT_IP
 EOF
 
 # Reload config
-wg syncconf wg-internal <(wg-quick strip wg-internal)
+wg syncconf wg0 <(wg-quick strip wg0)
 
 # Show QR config to display
 qrencode -t ansiutf8 < ./$USERNAME.conf
